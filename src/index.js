@@ -23,7 +23,8 @@ function getExchange() {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const ammount = document.querySelector("#ammount").value;
+  const ammount = document.querySelector("#dollar-ammount").value;
+  const selection = document.querySelector("#exchange-select").value;
   document.querySelector("#ammount").value = null;
   getExchange();
 }

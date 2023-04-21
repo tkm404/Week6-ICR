@@ -10,16 +10,18 @@
     <input id="dollar-ammount" type="number">
     <label for="exchange-select">Choose a world currency:</label>
     <select id="exchange-select">
-      <option>Euro</option>
-      <option>Japanese Yen (JPY)</option>
-      <option>Chinese Yuan Renminbi (CNY)</option>
-      <option>Indian Rupee (INR)</option>
-      <option>UK Pound (GBP)</option>
-      <option>Saudi Arabian Riyal (SAR)</option>
-      <option>Norwegian Krone (NOK)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="JPY">Japanese Yen (JPY)</option>
+      <option value="CNY">Chinese Yuan Renminbi (CNY)</option>
+      <option value="INR">Indian Rupee (INR)</option>
+      <option value="GBP">UK Pound (GBP)</option>
+      <option value="SAR">Saudi Arabian Riyal (SAR)</option>
+      <option value="NOK">Norwegian Krone (NOK)</option>
     </select>
     <button type="submit">Submit</button>
   </form>
+  
+  <div id="results"></div>
   
   <!-- <ul id="response"></ul>
   <h3>Enter the lengths of a rectangle's two sides to determine its area.</h3>
