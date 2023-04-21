@@ -14,11 +14,11 @@ function getExchange() {
       document.querySelector("#dollar-amount").value = null;
       if (response) {
         if (isNaN(amount)) {
-          return printError(selection);
+          return printError(response, selection);
         } else if (amount != "" && amount != null);
         printElements(response, amount, selection);
       } else {
-        printError(selection);
+        printError(response, selection);
       }
     });
 }
@@ -40,12 +40,12 @@ function printElements(response, amount, selection) {
   }
 }
 
-function printError(selection) {
+function printError(error, selection) {
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
   p.append(`It seems you entered something  unexpected when I'm sure you meant to enter a whole number.
-  I'm sure you could probably buy that with ${selection}, though.`);
+  I'm sure you could probably buy that with ${selection}, though. ${error}`);
 }
 
 
