@@ -19,8 +19,20 @@ function getExchange(ammount, selection) {
 // UI Logic
 
 function printElements(response, ammount, selection) {
-  const results = document.getElementById("results")
-  results.append(``)
+  // const results = document.getElementById("results")
+  const totalb = response
+  console.log(totalb);
+  const ammountb = ammount
+  console.log(ammountb)
+  const selectb = selection
+  console.log(selectb)
+}
+
+function printError(response, ammount, selection) {
+  const responsea = response
+  const ammounta = ammount
+  const selectiona = selection
+  console.log(responsea, ammounta, selectiona);
 }
 
 
@@ -28,7 +40,7 @@ function handleFormSubmission(event) {
   event.preventDefault();
   const ammount = document.querySelector("#dollar-ammount").value;
   const selection = document.querySelector("#exchange-select").value;
-  document.querySelector("#ammount").value = null;
+  document.querySelector("#dollar-ammount").value = null;
   getExchange(ammount, selection);
 }
 

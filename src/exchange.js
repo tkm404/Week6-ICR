@@ -6,6 +6,9 @@ static getExchange(ammount, selection) {
         const errorMessage = `${response.status} ${response.statusText}`;
         throw new Error(errorMessage);
       } else {
+        const ammountc = ammount
+        const selectc = selection
+        console.log(ammountc, selectc);
         return response.json();
       }
     })
