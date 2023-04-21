@@ -51,6 +51,7 @@ function printError(error, selection) {
 function handleFormSubmission(event) {
   event.preventDefault();
   getExchange();
+  document.getElementById("results").innerHTML = null;
 }
 
 
