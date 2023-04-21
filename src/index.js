@@ -20,17 +20,19 @@ function getExchange(ammount, selection) {
 // UI Logic
 
 function printElements(response, ammount, selection) {
+  const exchangeObject = response.conversion_rates;
   const exchangeArray = Object.keys(response.conversion_rates);
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
   for (let i=0; i < exchangeArray.length; i++) {
     if (exchangeArray[i] === selection) {
-      console.log(exchangeArray[selection]);
-    }
-
+      console.log(exchangeObject[exchangeArray[i]]);
+      const numberToConvert = exchangeObject[exchangeArray[i]];
+      const resultNumber = ammount*numberToConvert
+      p.append(`${ammount} US Dollar(s) is equal to ${resultNumber} ${selection}(s)`);
+    } 
   }
-  p.append(`${ammount} US Dollar(s) is equal to (${ammount}*${1}) ${selection}(s)`);
 }
 
 function printError(response, ammount, selection) {
