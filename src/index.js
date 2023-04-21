@@ -19,8 +19,6 @@ function getExchange() {
 // UI Logic
 
 
-
-
 function handleFormSubmission(event) {
   event.preventDefault();
   const ammount = document.querySelector("#dollar-ammount").value;
