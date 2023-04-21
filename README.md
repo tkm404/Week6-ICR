@@ -19,19 +19,22 @@ A user should be able to enter an amount in USD, then specify another currency a
 If the API call results in an error, the app should return a notification to the user that states what the error is (401, 404, etc.).
 If a query response doesn't include the inputted currency, the application should return a notification that states the currency in question doesn't exist.
 
+INSTRUCTIONS:
+Enter a whole integer into the box labeled "Enter an amount:", then select a world currency from the drop-down menu labeled as such. When you have an amount entered and a currecny selected, press the submit button. A message should appear, saying that however many dollars (the inputted number) is equal to however many bills of the selected world currency type. If a non-integer, or non-number are typed into the box, an error message will appear instead.
+
 ## Setup/Installation Req's
 
 Install all packages with: $ npm install.
-Build the project using webpack with: $ npm run build
-Start a new Dev server with: $ npm run start
-Lint JS files in the src folder with: $ npm run lint
-Run tests with: $ npm run test
+Build the project using webpack with: $ npm run build.
+Start a new Dev server with: $ npm run start.
+Lint JS files in the src folder with: $ npm run lint.
+Run tests with: $ npm run test.
+If you don't have one already, get an API key from exchangerate.api-com by signing up for their free option. Save the key in the .env folder and set it equal to API_KEY (eg. API_KEY=####). 
 
 Remember to rename the relevant title tags in webpack and package.json with the title of current project.
 
 ## Known Bugs
 
-*_Any known issues_
-*_go here_
+As far as I can tell, exchangerate-api.com doesn't have CORS, so a generic error message will pop up instead of specifically naming a 400-etc. error code. This could be because I wasn't using Chrome on my home computer- there are some ways Chrome can handle that issue, or so I'm told. Also the network error handling message does double-duty with the typo handling, resulting in some odd [object Object] text
 
 ## License
