@@ -11,13 +11,12 @@ function getExchange() {
       const amountCache = document.querySelector("#dollar-amount").value;
       const amount = parseInt(amountCache);
       const selection = document.querySelector("#exchange-select").value;
+      document.querySelector("#dollar-amount").value = null;
       if (response) {
         if (isNaN(amount)) {
           return printError(selection);
-
         } else if (amount != "" && amount != null);
         printElements(response, amount, selection);
-
       } else {
         printError(selection);
       }
@@ -52,7 +51,6 @@ function printError(selection) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  document.querySelector("#dollar-amount").value = null;
   getExchange();
 }
 
