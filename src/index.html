@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Currency Exchange Calculator</title>
+  <title>Currency Exchange</title>
 </head>
 <body>
-  <!-- <h3>Enter three lengths to determine if they can make a triangle.</h3>
-  <form id="triangle-checker-form">
-    <label for="length1">Enter a number:</label>
-    <input id="length1" type="number">
-    <label for="length2">Enter a number:</label>
-    <input id="length2" type="number">
-    <label for="length3">Enter a number:</label>
-    <input id="length3" type="number">
+  <h3>Enter an ammount in USD ($), and choose a currency to exchange.</h3>
+  <form id="exchange-form">
+    <label for="dollar-amount">Enter an ammount:</label>
+    <input id="dollar-ammount" type="number">
+    <label for="exchange-select">Choose a world currency:</label>
+    <select id="exchange-select">
+      <option>Euro</option>
+      <option>Japanese Yen (JPY)</option>
+      <option>Chinese Yuan Renminbi (CNY)</option>
+      <option>Indian Rupee (INR)</option>
+      <option>UK Pound (GBP)</option>
+      <option>Saudi Arabian Riyal (SAR)</option>
+      <option>Norwegian Krone (NOK)</option>
+    </select>
     <button type="submit">Submit</button>
   </form>
-  <ul id="response"></ul>
+  
+  <!-- <ul id="response"></ul>
   <h3>Enter the lengths of a rectangle's two sides to determine its area.</h3>
   <form id="rectangle-area-form">
     <label for="rect-length1">Enter a number:</label>

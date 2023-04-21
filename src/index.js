@@ -1,6 +1,35 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
+import ExchangeService from './exchange.js';
+
+// Business Logic
+
+function getExchange() {
+  ExchangeService.getExchange()
+  .then(function(response) {
+    if (response.main) {
+      printElements(response);
+    } else {
+      printError(response);
+    }
+  });
+}
+
+// UI Logic
+
+
+
+
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const ammount = document.querySelector("#ammount").value;
+  document.querySelector("#ammount").value = null;
+  getExchange();
+}
+
+
+document.querySelector('form').addEventListener("submit", handleFormSubmission);
 
 // import Triangle from './js/triangle.js';
 // import Rectangle from './js/rectangle.js';
