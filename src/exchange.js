@@ -2,8 +2,10 @@ export default class ExchangeService {
   static getExchange() {
     return fetch(`https://v6.exchangerate-api.com/v/${process.env.API_KEY}/latest/USD`)
       .then(function (response) {
+        console.log(response);
         if (!response.ok) {
-          const errorMessage = `${response.result} ${response.error_type}`;
+          console.log(response.status);
+          const errorMessage = `${response.status} ${response.statusText}`;
           throw new Error(errorMessage);
         } else {
           return response.json();

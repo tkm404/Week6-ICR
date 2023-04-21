@@ -44,8 +44,7 @@ function printError(error, selection) {
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
-  p.append(`It seems you entered something  unexpected when I'm sure you meant to enter a whole number.
-  I'm sure you could probably buy that with ${selection}, though. ${error}`);
+  p.append(`There was an error accessing the exchange data for ${selection}: ${error}`);
 }
 
 
