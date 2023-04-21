@@ -7,31 +7,31 @@ import ExchangeService from './exchange.js';
 
 function getExchange(ammount, selection) {
   ExchangeService.getExchange(ammount, selection)
-  .then(function(response) {
-    if (response.main) {
-      printElements(response, ammount, selection);
-    } else {
-      printError(response, ammount, selection);
-    }
-  });
+    .then(function (response) {
+      if (response.main) {
+        printElements(response, ammount, selection);
+      } else {
+        printError(response, ammount, selection);
+      }
+    });
 }
 
 // UI Logic
 
 function printElements(response, ammount, selection) {
   // const results = document.getElementById("results")
-  const totalb = response
+  const totalb = response;
   console.log(totalb);
-  const ammountb = ammount
-  console.log(ammountb)
-  const selectb = selection
-  console.log(selectb)
+  const ammountb = ammount;
+  console.log(ammountb);
+  const selectb = selection;
+  console.log(selectb);
 }
 
 function printError(response, ammount, selection) {
-  const responsea = response
-  const ammounta = ammount
-  const selectiona = selection
+  const responsea = response;
+  const ammounta = ammount;
+  const selectiona = selection;
   console.log(responsea, ammounta, selectiona);
 }
 
