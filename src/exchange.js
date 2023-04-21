@@ -1,6 +1,6 @@
 export default class ExchangeService {
 static getExchange(usd) {
-  return fetch()
+  return fetch(``)
   .then(function(response) {
       if (!response.ok) {
         const errorMessage = `${response.status} ${response.statusText}`;
@@ -14,5 +14,3 @@ static getExchange(usd) {
     });
   }
 }
-
-ss
