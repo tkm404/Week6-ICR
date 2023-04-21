@@ -1,5 +1,5 @@
 export default class ExchangeService {
-  static getExchange(ammount, selection) {
+  static getExchange() {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`)
       .then(function (response) {
         if (!response.ok) {
@@ -11,7 +11,6 @@ export default class ExchangeService {
               throw new Error(errorMessage);
             });
         } else {
-          console.log(ammount, selection);
           return response.json();
         }
       })

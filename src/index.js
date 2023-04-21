@@ -5,9 +5,12 @@ import ExchangeService from './exchange.js';
 
 // Business Logic
 
-function getExchange(amount, selection) {
-  ExchangeService.getExchange(amount, selection)
+function getExchange() {
+  ExchangeService.getExchange()
     .then(function (response) {
+      const amountCache = document.querySelector("#dollar-amount").value;
+      const amount = parseInt(amountCache);
+      const selection = document.querySelector("#exchange-select").value;
       if (response) {
         if (isNaN(amount)) {
           return printError(selection);
@@ -42,18 +45,15 @@ function printError(selection) {
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
-  p.append(`It seems you entered something that isn't a number when I'm sure you meant to enter a number.
+  p.append(`It seems you entered something  unexpected when I'm sure you meant to enter a whole number.
   I'm sure you could probably buy that with ${selection}, though.`);
 }
 
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const amountCache = document.querySelector("#dollar-amount").value;
-  const amount = parseInt(amountCache);
-  const selection = document.querySelector("#exchange-select").value;
   document.querySelector("#dollar-amount").value = null;
-  getExchange(amount, selection);
+  getExchange();
 }
 
 
