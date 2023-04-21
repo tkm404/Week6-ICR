@@ -5,18 +5,23 @@ import ExchangeService from './exchange.js';
 
 // Business Logic
 
-function getExchange() {
-  ExchangeService.getExchange()
+function getExchange(ammount, selection) {
+  ExchangeService.getExchange(ammount, selection)
   .then(function(response) {
     if (response.main) {
-      printElements(response);
+      printElements(response, ammount, selection);
     } else {
-      printError(response);
+      printError(response, ammount, selection);
     }
   });
 }
 
 // UI Logic
+
+function printElements(response, ammount, selection) {
+  const results = document.getElementById("results")
+  results.append(``)
+}
 
 
 function handleFormSubmission(event) {
@@ -24,7 +29,7 @@ function handleFormSubmission(event) {
   const ammount = document.querySelector("#dollar-ammount").value;
   const selection = document.querySelector("#exchange-select").value;
   document.querySelector("#ammount").value = null;
-  getExchange();
+  getExchange(ammount, selection);
 }
 
 
