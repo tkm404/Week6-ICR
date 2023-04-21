@@ -9,9 +9,14 @@ function getExchange(amount, selection) {
   ExchangeService.getExchange(amount, selection)
     .then(function (response) {
       if (response) {
+        if (isNaN(amount)) {
+          return printError(selection);
+
+        } else if (amount != "" && amount != null);
         printElements(response, amount, selection);
+
       } else {
-        // printError(response, amount, selection);
+        printError(selection);
       }
     });
 }
@@ -24,26 +29,28 @@ function printElements(response, amount, selection) {
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
-  for (let i=0; i < exchangeArray.length; i++) {
+  for (let i = 0; i < exchangeArray.length; i++) {
     if (exchangeArray[i] === selection) {
       const numberToConvert = exchangeObject[exchangeArray[i]];
-      const resultNumber = amount*numberToConvert;
+      const resultNumber = amount * numberToConvert;
       p.append(`${amount} US Dollar(s) is equal to ${resultNumber} ${selection}(s)`);
-    } 
+    }
   }
 }
 
-// function printError(response, amount, selection) {
-//   const responsea = response;
-//   const amounta = amount;
-//   const selectiona = selection;
-//   console.log(responsea, amounta, selectiona);
-// }
+function printError(selection) {
+  const results = document.getElementById("results");
+  const p = document.createElement("p");
+  results.append(p);
+  p.append(`It seems you entered something that isn't a number when I'm sure you meant to enter a number.
+  I'm sure you could probably buy that with ${selection}, though.`);
+}
 
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const amount = document.querySelector("#dollar-amount").value;
+  const amountCache = document.querySelector("#dollar-amount").value;
+  const amount = parseInt(amountCache);
   const selection = document.querySelector("#exchange-select").value;
   document.querySelector("#dollar-amount").value = null;
   getExchange(amount, selection);
