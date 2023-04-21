@@ -8,7 +8,8 @@ import ExchangeService from './exchange.js';
 function getExchange(ammount, selection) {
   ExchangeService.getExchange(ammount, selection)
     .then(function (response) {
-      if (response.main) {
+      if (response) {
+        console.log(response.conversion_rates.AED);
         printElements(response, ammount, selection);
       } else {
         printError(response, ammount, selection);
