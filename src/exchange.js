@@ -3,12 +3,15 @@ export default class ExchangeService {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`)
       .then(function (response) {
         if (!response.ok) {
-          const errorMessage = `${response.status} ${response.statusText}`;
-          throw new Error(errorMessage);
+          return response.json()
+            .then(function (apiErrorMessage) {
+              const errorMessage = `There was an issue calculating this ammount. Please try again.
+              ${response.status} ${response.statusText}
+          receiving ${apiErrorMessage.message} from the database`;
+              throw new Error(errorMessage);
+            });
         } else {
-          const ammountc = ammount;
-          const selectc = selection;
-          console.log(ammountc, selectc);
+          console.log(ammount, selection);
           return response.json();
         }
       })

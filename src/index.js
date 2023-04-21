@@ -5,21 +5,20 @@ import ExchangeService from './exchange.js';
 
 // Business Logic
 
-function getExchange(ammount, selection) {
-  ExchangeService.getExchange(ammount, selection)
+function getExchange(amount, selection) {
+  ExchangeService.getExchange(amount, selection)
     .then(function (response) {
       if (response) {
-        console.log(response.conversion_rates);
-        printElements(response, ammount, selection);
+        printElements(response, amount, selection);
       } else {
-        printError(response, ammount, selection);
+        // printError(response, amount, selection);
       }
     });
 }
 
 // UI Logic
 
-function printElements(response, ammount, selection) {
+function printElements(response, amount, selection) {
   const exchangeObject = response.conversion_rates;
   const exchangeArray = Object.keys(response.conversion_rates);
   const results = document.getElementById("results");
@@ -27,63 +26,28 @@ function printElements(response, ammount, selection) {
   results.append(p);
   for (let i=0; i < exchangeArray.length; i++) {
     if (exchangeArray[i] === selection) {
-      console.log(exchangeObject[exchangeArray[i]]);
       const numberToConvert = exchangeObject[exchangeArray[i]];
-      const resultNumber = ammount*numberToConvert
-      p.append(`${ammount} US Dollar(s) is equal to ${resultNumber} ${selection}(s)`);
+      const resultNumber = amount*numberToConvert;
+      p.append(`${amount} US Dollar(s) is equal to ${resultNumber} ${selection}(s)`);
     } 
   }
 }
 
-function printError(response, ammount, selection) {
-  const responsea = response;
-  const ammounta = ammount;
-  const selectiona = selection;
-  console.log(responsea, ammounta, selectiona);
-}
+// function printError(response, amount, selection) {
+//   const responsea = response;
+//   const amounta = amount;
+//   const selectiona = selection;
+//   console.log(responsea, amounta, selectiona);
+// }
 
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const ammount = document.querySelector("#dollar-ammount").value;
+  const amount = document.querySelector("#dollar-amount").value;
   const selection = document.querySelector("#exchange-select").value;
-  document.querySelector("#dollar-ammount").value = null;
-  getExchange(ammount, selection);
+  document.querySelector("#dollar-amount").value = null;
+  getExchange(amount, selection);
 }
 
 
 document.querySelector('form').addEventListener("submit", handleFormSubmission);
-
-// import Triangle from './js/triangle.js';
-// import Rectangle from './js/rectangle.js';
-
-
-// function handleTriangleForm() {
-//   event.preventDefault();
-//   document.querySelector('#response').innerText = null;
-//   const length2 = parseInt(document.querySelector('#length2').value);
-//   const length1 = parseInt(document.querySelector('#length1').value);
-//   const length3 = parseInt(document.querySelector('#length3').value);
-//   const triangle = new Triangle(length1, length2, length3);
-//   const response = triangle.checkType();
-//   const pTag = document.createElement("p");
-//   pTag.append(response);
-//   document.querySelector('#response').append(pTag);
-// }
-
-// function handleRectangleForm() {
-//   event.preventDefault();
-//   document.querySelector('#response2').innerText = null;
-//   const length1 = parseInt(document.querySelector('#rect-length1').value);
-//   const length2 = parseInt(document.querySelector('#rect-length2').value);
-//   const rectangle = new Rectangle(length1, length2);
-//   const response = rectangle.getArea();
-//   const pTag = document.createElement("p");
-//   pTag.append(`The area of the rectangle is ${response}.`);
-//   document.querySelector('#response2').append(pTag);
-// }
-
-// window.addEventListener("load", function() {
-//   document.querySelector("#triangle-checker-form").addEventListener("submit", handleTriangleForm);
-//   document.querySelector("#rectangle-area-form").addEventListener("submit", handleRectangleForm);
-// });
