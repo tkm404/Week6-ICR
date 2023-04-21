@@ -9,7 +9,7 @@ function getExchange(ammount, selection) {
   ExchangeService.getExchange(ammount, selection)
     .then(function (response) {
       if (response) {
-        console.log(response.conversion_rates.AED);
+        console.log(response.conversion_rates);
         printElements(response, ammount, selection);
       } else {
         printError(response, ammount, selection);
@@ -20,13 +20,17 @@ function getExchange(ammount, selection) {
 // UI Logic
 
 function printElements(response, ammount, selection) {
-  // const results = document.getElementById("results")
-  const totalb = response;
-  console.log(totalb);
-  const ammountb = ammount;
-  console.log(ammountb);
-  const selectb = selection;
-  console.log(selectb);
+  const exchangeArray = Object.keys(response.conversion_rates);
+  const results = document.getElementById("results");
+  const p = document.createElement("p");
+  results.append(p);
+  for (let i=0; i < exchangeArray.length; i++) {
+    if (exchangeArray[i] === selection) {
+      console.log(exchangeArray[selection]);
+    }
+
+  }
+  p.append(`${ammount} US Dollar(s) is equal to (${ammount}*${1}) ${selection}(s)`);
 }
 
 function printError(response, ammount, selection) {
