@@ -13,11 +13,12 @@ function getExchange() {
       const selection = document.querySelector("#exchange-select").value;
       document.querySelector("#dollar-amount").value = null;
       if (response) {
+        // console.log(response.status);
         if (isNaN(amount)) {
-          return printError(response, selection);
+          return printErrorNotNumber();
         } else if (amount != "" && amount != null);
         printElements(response, amount, selection);
-      } else {
+      } else if (!response) {
         printError(response, selection);
       }
     });
@@ -40,7 +41,15 @@ function printElements(response, amount, selection) {
   }
 }
 
+function printErrorNotNumber() {
+  const results = document.getElementById("results");
+  const p = document.createElement("p");
+  results.append(p);
+  p.append("That's not a number, try again.");
+}
+
 function printError(error, selection) {
+  // console.log(selection)
   const results = document.getElementById("results");
   const p = document.createElement("p");
   results.append(p);
