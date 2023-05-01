@@ -12,16 +12,16 @@ function getExchange() {
       const amount = parseInt(amountCache);
       const selection = document.querySelector("#exchange-select").value;
       document.querySelector("#dollar-amount").value = null;
-      if (response) {
-        // console.log(response.status);
+      if (response.result === "success") {
         if (isNaN(amount)) {
           return printErrorNotNumber();
         } else if (amount != "" && amount != null);
         printElements(response, amount, selection);
-      } else if (!response) {
+      } else if (response) {
         printError(response, selection);
       }
     });
+    
 }
 
 // UI Logic
